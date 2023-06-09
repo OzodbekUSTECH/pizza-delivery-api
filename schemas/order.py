@@ -31,3 +31,25 @@ class OrderRequest(BaseModel):
 #             }
 #         }
 
+
+class OrderStatusSchema(BaseModel):
+    order_status: Optional[str] = "PENDING"
+    
+    class Config:
+        orm_mode = True
+        
+class UserOrdersSchema(BaseModel):
+    id: int
+    quantity: int
+    order_status: str
+    pizza_size: str
+
+    class Config:
+        orm_mode = True
+
+class DeletedOrderSchema(BaseModel):
+    status: str
+    data: OrderSchema
+
+    class Config:
+        orm_mode = True
